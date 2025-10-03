@@ -1,0 +1,78 @@
+{% extends 'SistemaRegistros/base.html' %}
+
+{% block title %}
+    Registrar Visita
+{% endblock %}
+
+{% block content %}
+    <section class="seccion-fondo-claro">
+        <div class="m-3 p-4">
+            <h2 class="text-center mb-4">
+                Registra una Nueva Visita
+                <span><i class="bi bi-calendar"></i></span>
+            </h2>
+            <p class="text-center mb-4">Complete los siguientes datos para registrar una nueva visita a la empresa.</p>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    <label for="rut" class="form-label">RUT</label>
+                    <input type="text" class="form-control" id="rut" name="rut" placeholder="Ej: 23433434-6" required>
+                    <small class="form-text text-muted">Debe ingresar su RUT sin puntos y con guión al final.</small>
+                </div>
+                {% if form.rut.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ form.rut.errors }}
+                    </div>
+                {% endif %}
+                <div class="form-group mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                {% if form.nombre.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ form.nombre.errors }}
+                    </div>
+                {% endif %}
+                <div class="form-group mb-3">
+                    <label for="motivo_visita" class="form-label">Motivo de la Visita</label>
+                    <input type="text" class="form-control" id="motivo_visita" name="motivo_visita" required>
+                </div>
+                {% if form.motivo_visita.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ form.motivo_visita.errors }}
+                    </div>
+                {% endif %}
+                <div class="form-group mb-3">
+                    <label for="fecha_visita" class="form-label">Fecha de la Visita</label>
+                    <input type="date" class="form-control" id="fecha_visita" name="fecha_visita" required>
+                </div>
+                {% if form.fecha_visita.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ form.fecha_visita.errors }}
+                    </div>
+                {% endif %}
+                <div class="form-group mb-3">
+                    <label for="hora_entrada" class="form-label">Hora de Entrada</label>
+                    <input type="time" class="form-control" id="hora_entrada" name="hora_entrada" required>
+                </div>
+                {% if form.hora_entrada.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ form.hora_entrada.errors }}
+                    </div>
+                {% endif %}
+                <div class="form-group mb-3">
+                    <label for="hora_salida" class="form-label">Hora de Salida</label>
+                    <input type="time" class="form-control" id="hora_salida" name="hora_salida" required>
+                </div>
+                {% if form.hora_salida.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ form.hora_salida.errors }}
+                    </div>
+                {% endif %}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success px-4 py-2">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

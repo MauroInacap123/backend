@@ -1,0 +1,24 @@
+{% extends 'SistemaRegistros/base.html' %}
+
+{% block title %}
+    Eliminar Visita
+{% endblock %}
+
+{% block content %}
+    <section class="seccion-fondo-claro">
+        <div class="m-3 p-4 text-center">
+            <h2 class="mb-4">
+                Eliminar registro de visita
+                <span><i class="bi bi-trash"></i></span>
+            </h2>
+            <p class="mb-4">¿Estás seguro de que deseas eliminar la visita de: <strong>{{ visita.nombre }}</strong>?</p>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-danger px-4 py-2 me-3">Eliminar</button>
+                    <a href="{% url 'lista_visitas' %}" class="btn btn-secondary px-4 py-2">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
